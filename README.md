@@ -1,5 +1,5 @@
 # charts-swiftui-wwdc22
-SwiftUI project charts implementation using Charts API announced in WWDC 2022
+SwiftUI project FoodCourt Sales charts implementation using Charts API announced in WWDC 2022
 
 # Screenshots
 
