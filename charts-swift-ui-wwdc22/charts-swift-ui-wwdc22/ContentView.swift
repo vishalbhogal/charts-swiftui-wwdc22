@@ -26,23 +26,78 @@ let foodCourtShops: [FoodCourtShops] = {
 
 struct ContentView: View {
     var body: some View {
-        Chart(foodCourtShops) {
-                BarMark(x: .value("Name", $0.shopName),
-                        y: .value("Sales", $0.sales))
-                .foregroundStyle(by: .value("ColorId", $0.color))
-                .opacity(0.85)
-                .symbol(by: .value("chartSymbol", $0.color))
-                .cornerRadius(12)
+        NavigationView {
+            ScrollView {
+                VStack {
+                    Chart(foodCourtShops) {
+                        BarMark(x: .value("Name", $0.shopName),
+                                y: .value("Sales", $0.sales))
+                        .foregroundStyle(by: .value("ColorId", $0.color))
+                        .opacity(0.85)
+                        .symbol(by: .value("chartSymbol", $0.color))
+                        .cornerRadius(12)
+                    }
+                    .chartForegroundStyleScale([
+                        "Green": .green,
+                        "Red": .red,
+                        "Pink": .pink,
+                        "Yellow": .yellow,
+                        "Blue": .blue
+                    ])
+                    .frame(height: 400)
+                    .padding()
+                    
+                    Chart(foodCourtShops) {
+                        LineMark(x: .value("Name", $0.shopName),
+                                y: .value("Sales", $0.sales))
+                        .opacity(0.85)
+                        .cornerRadius(12)
+                        .foregroundStyle(Color.orange.gradient)
+                    }
+                    .frame(height: 400)
+                    .padding()
+                    
+                    Chart(foodCourtShops) {
+                        PointMark(x: .value("Name", $0.shopName),
+                                y: .value("Sales", $0.sales))
+                        .foregroundStyle(by: .value("ColorId", $0.color))
+                        .opacity(0.85)
+                        .symbol(by: .value("chartSymbol", $0.color))
+                        .cornerRadius(12)
+                    }
+                    .chartForegroundStyleScale([
+                        "Green": .green,
+                        "Red": .red,
+                        "Pink": .pink,
+                        "Yellow": .yellow,
+                        "Blue": .blue
+                    ])
+                    .frame(height: 400)
+                    .padding()
+                    
+                    Chart(foodCourtShops) {
+                        AreaMark(x: .value("Name", $0.shopName),
+                                y: .value("Sales", $0.sales))
+                        .opacity(0.85)
+                        .symbol(by: .value("chartSymbol", $0.color))
+                        .cornerRadius(12)
+                        .foregroundStyle(Color.yellow.gradient)
+                    }
+                    .chartForegroundStyleScale([
+                        "Green": .green,
+                        "Red": .red,
+                        "Pink": .pink,
+                        "Yellow": .yellow,
+                        "Blue": .blue
+                    ])
+                    .frame(height: 400)
+                    .padding()
+                }
+                .navigationTitle("Charts")
             }
-        .chartForegroundStyleScale([
-            "Green": .green,
-            "Red": .red,
-            "Pink": .pink,
-            "Yellow": .yellow,
-            "Blue": .blue
-        ])
         }
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
